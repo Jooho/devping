@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -103,6 +104,26 @@ public class TestJsonPaser {
         stmt = conn.createStatement();
          stmt.execute(query1);
          stmt.execute(query2);
+
+
+    }
+
+
+    @Test
+    public void selectDB() throws Exception {
+
+        String myDriver="com.mysql.jdbc.Driver";
+        String myUrl="jdbc:mysql://128.199.145.31/devping";
+        Class.forName(myDriver);
+        Connection conn = DriverManager.getConnection(myUrl,"devping","devping");
+
+        java.sql.Statement stmt = null;
+        String query1 = "select * from UserConnection";
+        String query2 = "select * from user_accounts";
+        stmt = conn.createStatement();
+        ResultSet rs1= stmt.executeQuery(query1);
+        ResultSet rs2 = stmt.executeQuery(query2);
+
 
 
     }

@@ -42,6 +42,9 @@ devPingApp.controller('WebsocketController', function($scope){
         }
     };
 
+    function log(message) {
+        console.log(message);
+    }
 
 });
 

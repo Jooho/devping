@@ -12,7 +12,6 @@
 <div class="page-header">
     <h1>login</h1>
 </div>
-<sec:authorize access="isAnonymous()">
     <div class="panel panel-default">
         <div class="panel-body">
             <h2>login</h2>
@@ -22,7 +21,7 @@
                     fail
                 </div>
             </c:if>
-            <form action="${pageContext.request.contextPath}/signin/authenticate" method="POST" role="form">
+            <form action="/authenticate" method="POST" >
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <div class="row">
                     <div id="form-group-email" class="form-group col-lg-4">
@@ -39,7 +38,7 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-4">
-                        <button type="submit" class="btn btn-default">submit</button>
+                        <input type="submit" class="btn btn-default" value="submit"/>
                     </div>
                 </div>
             </form>
@@ -80,7 +79,6 @@
             </div>
         </div>
     </div>
-</sec:authorize>
 <sec:authorize access="isAuthenticated()">
     <p>help</p>
 </sec:authorize>

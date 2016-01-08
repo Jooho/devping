@@ -20,11 +20,11 @@ public class DevPingWebSocketContextConfig implements WebSocketConfigurer {
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         // WebSocket을 /echo 에 연결합니다.
-        registry.addHandler(echoHandler(), "/echo")
+        registry.addHandler(echoHandler(), "/devpingWS")
         .addInterceptors(new org.jbug.devping.interfaces.ws.SessionInterceptor());
 
         // SocketJS 지원 url을 /socketjs/echo에 연결합니다.
-        registry.addHandler(echoHandler(), "/socketjs/echo").withSockJS()
+        registry.addHandler(echoHandler(), "/socketjs/devpingWS").withSockJS()
         .setInterceptors(new org.jbug.devping.interfaces.ws.SessionInterceptor());
     }
 

@@ -249,8 +249,8 @@
     </form>
 
     <h3>Ping 요청</h3>
-    PingRequester : ljhiyh<br/>
-    Ping을 받을 사람 : jooho, redhat <br/>
+        PingRequester : <input type="text" value="pingRequester"/> </br>
+        Ping을 받을 사람 : <input type="text" value="pingReceiver/>
 
     <table>
         <tr>

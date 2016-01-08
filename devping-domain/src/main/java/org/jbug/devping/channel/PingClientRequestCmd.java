@@ -4,7 +4,6 @@ import org.jbug.devping.service.WSSessionManagerService;
 import org.jbug.devping.vo.PingToServerRequsetVo;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
@@ -60,6 +59,9 @@ public class PingClientRequestCmd implements Commander{
         } catch (IOException e) {
             System.out.println("The user websocket is disconnected");
             e.printStackTrace();
+
+            //to-do
+            //throw DevpingException("websocket is not disconnected" ,e);
         }
 
         System.out.println(pingJsonObject.toJSONString());

@@ -33,6 +33,19 @@ private static final Logger logger = LoggerFactory.getLogger(HomeController.clas
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home2(Model model, HttpServletRequest request) {
+
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Object o = (auth != null) ? auth.getPrincipal() :  null;
+
+        UserVo user = null;
+
+        if (o != null && o instanceof UserVo) {
+            user = (UserVo) o;
+
+            model.addAttribute("userId",user.getUserId());
+        }
+
         return "home";
     }
 

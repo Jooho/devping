@@ -8,7 +8,7 @@ devPingApp.controller('PingPongController', function($scope, $interval, pingPong
 //get user info - require login part
 		$scope.user = {
 			id: 'guest',
-			poing: 0
+			pong: 0
 		};
 		$scope.myRoomList = [];
 		$scope.chatList = {};
@@ -17,8 +17,8 @@ devPingApp.controller('PingPongController', function($scope, $interval, pingPong
 		$scope.pongCount = 0;
 		$scope.chatInputChecked = false;
 		$scope.tagListChecked = false;
+
 	};
-	
 	$scope.traceTagName = function() {
 		$scope.tagListChecked = false;
 		var tagArray = $scope.pingTags.split(',');
@@ -76,7 +76,7 @@ devPingApp.controller('PingPongController', function($scope, $interval, pingPong
 		pingPongService.ping({
 			func: "ping_to_server",
 			userIdsWithTag: $scope.userIdsWithTag,
-			userId: 'ljhiyh',
+			userId: $scope.userId,
 			nickName: 'ljhiyh',
 			question: $scope.pingQuestion
 		}).then(
@@ -140,4 +140,6 @@ devPingApp.controller('PingPongController', function($scope, $interval, pingPong
 			$scope.chatInputChecked = false;
 		}
 	};
+
+
 });

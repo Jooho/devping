@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page session="false" %>
 <!DOCTYPE HTML>
 <html lang="ko" data-ng-app="devPingApp">
@@ -25,12 +26,20 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a href="main" class="logo">DevPing</a>
+                <form action="/logout" method="post">
+                    <input type="submit" value="Log out" />
+                </form>
 			</div>
 		</div>
 	</header>
+    <!-- Websocket Connection Controller-->
+    <div data-ng-controller="WebsocketController" ng-init="init()" ></div>
+
 	<!-- Callout for the old docs link -->
 	<div class="container"
 		data-ng-controller="PingPongController">
+     <div ng-init="userId = '${userId}';"></div>
+            angular  =  {{userId}}
 		<div class="row jb-c-content">
 			<aside class="col-md-2 jb-c-content">
 				<div class="jb-c-box" style="height: 100px;">
@@ -192,6 +201,7 @@
 	<!-- App libs -->
 	<script src="<c:url value="/resources/js/app.js"/>"></script>
 	<script src="<c:url value="/resources/js/controllers.js"/>"></script>
+    <script src="<c:url value="/resources/js/wscontrollers.js"/>"></script>
 	<script src="<c:url value="/resources/js/services.js"/>"></script>
 </body>
 </html>

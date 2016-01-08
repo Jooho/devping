@@ -16,19 +16,19 @@ import java.util.Map;
 public class WSSessionManager {
     private final static Logger logger = LoggerFactory.getLogger(WSSessionManager.class);
 
-    private static final Map<String,WebSocketSession> sessions = Collections.synchronizedMap(new HashMap<String,WebSocketSession>());
+    private static final Map<String,WebSocketSession> wsSessionList = Collections.synchronizedMap(new HashMap<String,WebSocketSession>());
 
     public WebSocketSession get(String userId){
-        return sessions.get(userId);
+        return wsSessionList.get(userId);
     }
 
     public void put(String userId, WebSocketSession session){
         if(logger.isDebugEnabled()){
-            System.out.println("websocket session is added to ChannelManager for " + userId + " : session = " +session.getId());
+            System.out.println("websocket session is added to WSChannelManager for " + userId + " : session = " +session.getId());
         }
-        System.out.println("websocket session is added to ChannelManager for " + userId + " : session = " +session.getId());
+        System.out.println("websocket session is added to WSChannelManager for " + userId + " : session = " +session.getId());
 
-        sessions.put(userId,session);
+        wsSessionList.put(userId, session);
         System.out.println(contain(userId));
 
     }
@@ -36,16 +36,16 @@ public class WSSessionManager {
 
     public void remove(String userId) {
         if(logger.isDebugEnabled()){
-            System.out.println("websocket session is removed from ChannelManager for " + userId + " : session = " + sessions.get(userId).getId());
+            System.out.println("websocket session is removed from WSChannelManager for " + userId + " : session = " + wsSessionList.get(userId).getId());
         }
-        System.out.println("websocket session is removed from ChannelManager for " + userId + " : session = " + sessions.get(userId).getId());
+        System.out.println("websocket session is removed from WSChannelManager for " + userId + " : session = " + wsSessionList.get(userId).getId());
 
-        sessions.remove(userId);
+        wsSessionList.remove(userId);
         System.out.println(contain(userId));
     }
 
     public boolean contain(String userId){
-        return sessions.containsKey(userId);
+        return wsSessionList.containsKey(userId);
     }
 }
 
